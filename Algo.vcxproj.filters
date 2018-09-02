@@ -44,11 +44,11 @@
     <ClCompile Include="Algo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortsTester.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortsTester.cpp">
+      <Filter>Source Files\Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
