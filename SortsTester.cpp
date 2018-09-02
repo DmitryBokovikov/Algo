@@ -16,12 +16,12 @@ namespace tests_ns
 	using namespace algo_ns;
 	implementedSorts_ =
 	{
-	    { "BubbleSort",	    bubble_sort<VIterator> },
+	    { SortName::bubble_sort,	    bubble_sort<VIterator> },
 	    //{ "DwarfSort",	    dwarf_sort<VIterator> },
-	    { "SelectionSort",	    selection_sort<VIterator> }
+	    { SortName::selection_sort,	    selection_sort<VIterator> },
 	    //{ "InsertionSort",  insertion_sort<VIterator> },
 	    //{ "MergeSort",	    merge_sort<VIterator> },
-	    //{ "QuickSort",	    quick_sort<VIterator> },
+	    { SortName::quick_sort,	    quick_sort<VIterator> }
 	    //{ "HeapSort",	    heap_sort<VIterator> },
 	    //{ "RadixSort",	    radix_sort<VIterator> }
 	};
@@ -64,20 +64,61 @@ namespace tests_ns
 	LogSortTime("std::sort", (int)spendTime);
     }
 
+    std::string SortsTester::SortIdToString(const SortName& sortId)
+    {
+	switch (sortId)
+	{
+	case SortName::bubble_sort:
+	    return "bubble_sort";
+	case SortName::dwarf_sort:
+	    return "dwarf_sort";
+	case SortName::selection_sort:
+	    return "selection_sort";
+	case SortName::insertion_sort:
+	    return "insertion_sort";
+	case SortName::merge_sort:
+	    return "merge_sort";
+	case SortName::quick_sort:
+	    return "quick_sort";
+	case SortName::heap_sort:
+	    return "heap_sort";
+	case SortName::radix_sort:
+	    return "bubble_sort";
+	default:
+	    throw std::runtime_error("Unexpected value in " + std::string(__func__));
+	}   
+    }
+
+    bool SortsTester::HasFastComplexity(const SortName& sortId)
+    {
+	switch (sortId)
+	{
+	case SortName::insertion_sort:
+	case SortName::merge_sort:
+	case SortName::quick_sort:
+	case SortName::heap_sort:
+	case SortName::radix_sort:
+	    return true;
+	default:
+	    return false;
+	}
+    }
+
     void SortsTester::TestAll()
     {
 	for (const auto& sort : implementedSorts_)
 	    TestSpecific(std::get<sort_name>(sort));
     }
 
-    void SortsTester::TestSpecific(std::string_view sort)
+    void SortsTester::TestSpecific(const SortName& sortName)
     {
-	auto it = implementedSorts_.find(sort.data());
+	auto it = implementedSorts_.find(sortName);
 	if (implementedSorts_.end() == it)
-	    throw std::runtime_error(std::string("Couldn't find sort alg with name ") + sort.data());
+	    throw std::runtime_error("Couldn't find sort alg with name " + SortIdToString(sortName));
 
 	TestOnSmallCases(*it);
-	TestOnBigCase(*it);
+	if (HasFastComplexity(sortName))
+	    TestOnBigCase(*it);
     }
 
     void SortsTester::TestOnSmallCases(const SortPair& sortPair)
@@ -88,7 +129,7 @@ namespace tests_ns
 	    auto caseCopy = smallCasesEtalons_[i];
 	    sortFunc(caseCopy.begin(), caseCopy.end());
 	    if (caseCopy != smallCasesEtalons_[i])
-		throw std::runtime_error("Error in implementaion of " + name);
+		throw std::runtime_error("Error in implementaion of " + SortIdToString(name));
 	}
     }
 
@@ -98,8 +139,8 @@ namespace tests_ns
 	auto caseCopy = bigCase_;
 	auto spendTime = util_ns::spend_time(sortFunc, caseCopy.begin(), caseCopy.end());
 	if (caseCopy != bigCaseEtalon_)
-	    throw std::runtime_error("Error in implementaion of " + name);
-	LogSortTime(name, (int)spendTime);
+	    throw std::runtime_error("Error in implementaion of " + SortIdToString(name));
+	LogSortTime(SortIdToString(name), (int)spendTime);
     }
 
     void SortsTester::LogSortTime(std::string_view name, int milliseconds)

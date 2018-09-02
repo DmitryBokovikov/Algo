@@ -13,13 +13,26 @@ namespace tests_ns
     {
     public:
 	SortsTester(std::string fileName = "sorts_out.txt");
+
+	enum class SortName
+	{
+	    bubble_sort,
+	    dwarf_sort,
+	    selection_sort,
+	    insertion_sort,
+	    merge_sort,
+	    quick_sort,
+	    heap_sort,
+	    radix_sort
+	};
+
 	void TestAll();
-	void TestSpecific(std::string_view sort);
+	void TestSpecific(const SortName& sortName);
 
     private:
 	using VIterator = std::vector<int>::iterator;
 	using SortFunc = std::function<void(VIterator, VIterator)>;
-	using SortsMap = std::unordered_map<std::string, SortFunc>;
+	using SortsMap = std::unordered_map<SortName, SortFunc>;
 	using SortPair = SortsMap::value_type;
 	enum SortHashMapValue { sort_name, sort_func };
 
@@ -28,6 +41,8 @@ namespace tests_ns
 	void InitSmallCases();
 	void InitBigCase();
 	void LogSortTime(std::string_view name, int milliseconds);
+	std::string SortIdToString(const SortName& sortId);
+	bool HasFastComplexity(const SortName& sortId);
 
     private:
 	std::vector<std::vector<int>> smallCases_;
@@ -37,7 +52,7 @@ namespace tests_ns
 	SortsMap implementedSorts_;
 	std::ofstream out_;
 
-	static constexpr size_t BIG_CASE_LENGTH = 1'000'00;
+	static constexpr size_t BIG_CASE_LENGTH = 1'000'000;
 	static constexpr size_t SMALL_CASES_NUMBER = 100;
     };
 }
