@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <algorithm>
+#include <iterator>
+#include <type_traits>
 
 namespace algo_ns
 {
@@ -32,5 +34,45 @@ namespace algo_ns
 	auto itEqual = std::partition(itBeg, itGreater, [pivot](auto val) { return val < pivot; });
 	quick_sort(itBeg, itEqual);
 	quick_sort(itGreater, itEnd);
+    }
+
+    template <class RAIterator>
+    void merge(RAIterator itBeg, RAIterator itMiddle, RAIterator itEnd)
+    {
+	auto itLeft = itBeg, itRight = itMiddle;
+	using valueT = typename std::iterator_traits<RAIterator>::value_type;
+	std::vector<valueT> merged;
+	merged.reserve(itEnd - itBeg);
+	while (itLeft < itMiddle && itRight < itEnd)
+	    merged.push_back(*itLeft < *itRight ? *itLeft++ : *itRight++);
+
+	std::copy(itLeft, itMiddle, std::back_inserter(merged));
+	std::copy(itRight, itEnd, std::back_inserter(merged));
+	std::copy(merged.begin(), merged.end(), itBeg);
+    }
+
+    template <class RAIterator>
+    void merge_sort(RAIterator itBeg, RAIterator itEnd)
+    {
+	if (itEnd - itBeg <= 1)
+	    return;
+
+	auto itMiddle = itBeg + (itEnd - itBeg) / 2;
+	merge_sort(itBeg, itMiddle);
+	merge_sort(itMiddle, itEnd);
+	merge(itBeg, itMiddle, itEnd);
+    }
+
+    template <class RAIterator>
+    void insertion_sort(RAIterator itBeg, RAIterator itEnd)
+    {
+	for (auto it = itBeg + 1; it < itEnd; ++it)
+	{
+	    auto itInsert = std::upper_bound(itBeg, it, *it);
+	    // same effect as std::rotate(itInsert, it, it + 1); but faster
+	    auto val = *it;
+	    std::copy_backward(itInsert, it, it + 1);
+	    *itInsert = val;	    
+	}
     }
 }

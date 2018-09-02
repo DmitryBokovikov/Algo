@@ -19,8 +19,8 @@ namespace tests_ns
 	    { SortName::bubble_sort,	    bubble_sort<VIterator> },
 	    //{ "DwarfSort",	    dwarf_sort<VIterator> },
 	    { SortName::selection_sort,	    selection_sort<VIterator> },
-	    //{ "InsertionSort",  insertion_sort<VIterator> },
-	    //{ "MergeSort",	    merge_sort<VIterator> },
+	    { SortName::insertion_sort,  insertion_sort<VIterator> },
+	    { SortName::merge_sort,	    merge_sort<VIterator> },
 	    { SortName::quick_sort,	    quick_sort<VIterator> }
 	    //{ "HeapSort",	    heap_sort<VIterator> },
 	    //{ "RadixSort",	    radix_sort<VIterator> }
@@ -139,7 +139,12 @@ namespace tests_ns
 	auto caseCopy = bigCase_;
 	auto spendTime = util_ns::spend_time(sortFunc, caseCopy.begin(), caseCopy.end());
 	if (caseCopy != bigCaseEtalon_)
+	{
+	    auto mismatch = std::mismatch(caseCopy.begin(), caseCopy.end(), bigCaseEtalon_.begin());
+	    std::cout << " mismatches at " << *mismatch.first << " and " << *mismatch.second << '\n';
 	    throw std::runtime_error("Error in implementaion of " + SortIdToString(name));
+	}
+	    
 	LogSortTime(SortIdToString(name), (int)spendTime);
     }
 
