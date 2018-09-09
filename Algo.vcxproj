@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseTester.h" />
+    <ClInclude Include="SegmentTree.h" />
     <ClInclude Include="Sorts.h" />
     <ClInclude Include="SortsTester.h" />
     <ClInclude Include="stdafx.h" />

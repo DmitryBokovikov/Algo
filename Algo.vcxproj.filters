@@ -39,6 +39,9 @@
     <ClInclude Include="BaseTester.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
+    <ClInclude Include="SegmentTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
