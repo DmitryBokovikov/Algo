@@ -30,17 +30,17 @@
     <ClInclude Include="Sorts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SortsTester.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseTester.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="SegmentTree.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\BaseTester.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\SortsTester.h">
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,10 +53,10 @@
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortsTester.cpp">
+    <ClCompile Include="tests\BaseTester.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="BaseTester.cpp">
+    <ClCompile Include="tests\SortsTester.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
   </ItemGroup>
