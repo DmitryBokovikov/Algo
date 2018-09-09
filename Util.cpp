@@ -4,7 +4,7 @@
 
 namespace util_ns
 {
-    std::vector<int> gen_data(size_t size)
+    std::vector<long long> gen_data(size_t size)
     {
 	struct GetRandom
 	{
@@ -13,13 +13,13 @@ namespace util_ns
 		std::random_device rd;
 		mt_ = std::mt19937(rd());
 	    }
-	    int operator()() { return dist_(mt_); }
+	    long long operator()() { return dist_(mt_); }
 	private:
 	    std::mt19937 mt_;
-	    std::uniform_int_distribution<int> dist_;
+	    std::uniform_int_distribution<long long> dist_;
 	};
 
-	std::vector<int> testData(size);
+	std::vector<long long> testData(size);
 	std::generate_n(testData.begin(), size, GetRandom());
 	return testData;
     }

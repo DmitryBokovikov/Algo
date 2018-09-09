@@ -7,13 +7,14 @@
 
 namespace util_ns
 {
-    template<class T, class ... Args>
-    decltype(auto) spend_time(T func, Args&& ... args)
+    template<class Func, class ... Args>
+    decltype(auto) spend_time(Func func, Args&& ... args)
     {
 	using namespace std::chrono;
 	auto start = steady_clock::now();
-	func(args...);
-	return duration_cast<milliseconds>(steady_clock::now() - start).count();
+	auto res = func(args...);
+	auto millisecond_spend = duration_cast<milliseconds>(steady_clock::now() - start).count();
+	return std::make_pair(res, millisecond_spend);
     }
 
     template<class T, class ... Args>
@@ -30,7 +31,7 @@ namespace util_ns
 	}
     }
 
-    std::vector<int> gen_data(size_t size);
+    std::vector<long long> gen_data(size_t size);
 
     // TODO : implement RAII thread
 }

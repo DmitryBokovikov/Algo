@@ -1,20 +1,19 @@
 #pragma once
 
-#include <unordered_map>
-#include <string>
-#include <string_view>
-#include <functional>
-#include <vector>
-#include <fstream>
+#include "BaseTester.h"
 
 namespace tests_ns
 {
-    class SortsTester
+    class sorts_tester : public tester_base
     {
     public:
-	SortsTester(std::string fileName = "sorts_out.txt");
+	sorts_tester(std::string_view out_file_name);
+    private:
+	bool has_fast_complexity(const std::string& func_name) final;
+	void init_test_functions() final;
+	void init_etalon_function() final;
 
-	enum class SortName
+	enum class sort_name
 	{
 	    bubble_sort,
 	    dwarf_sort,
@@ -26,33 +25,13 @@ namespace tests_ns
 	    radix_sort
 	};
 
-	void TestAll();
-	void TestSpecific(const SortName& sortName);
+	using VLIterator = std::vector<ll>::iterator;
+	using sort_func = std::function<void(VLIterator, VLIterator)>;
+	using sorts_map = std::unordered_map<sort_name, sort_func>;
 
+	std::string sort_id_to_string(const sort_name& sort_id);
+	sort_name string_to_sort_id(const std::string& sort);
     private:
-	using VIterator = std::vector<int>::iterator;
-	using SortFunc = std::function<void(VIterator, VIterator)>;
-	using SortsMap = std::unordered_map<SortName, SortFunc>;
-	using SortPair = SortsMap::value_type;
-	enum SortHashMapValue { sort_name, sort_func };
-
-	void TestOnSmallCases(const SortPair& sortPair);
-	void TestOnBigCase(const SortPair& sortPair);
-	void InitSmallCases();
-	void InitBigCase();
-	void LogSortTime(std::string_view name, int milliseconds);
-	std::string SortIdToString(const SortName& sortId);
-	bool HasFastComplexity(const SortName& sortId);
-
-    private:
-	std::vector<std::vector<int>> smallCases_;
-	std::vector<std::vector<int>> smallCasesEtalons_;
-	std::vector<int> bigCase_;
-	std::vector<int> bigCaseEtalon_;
-	SortsMap implementedSorts_;
-	std::ofstream out_;
-
-	static constexpr size_t BIG_CASE_LENGTH = 1'000'000;
-	static constexpr size_t SMALL_CASES_NUMBER = 100;
+	sorts_map implemented_sorts_;
     };
 }
