@@ -42,6 +42,9 @@
     <ClInclude Include="tests\SortsTester.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
+    <ClInclude Include="tests\SegmentTreeTester.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

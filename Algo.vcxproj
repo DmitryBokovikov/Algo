@@ -156,6 +156,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="tests\BaseTester.h" />
+    <ClInclude Include="tests\SegmentTreeTester.h" />
     <ClInclude Include="tests\SortsTester.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>

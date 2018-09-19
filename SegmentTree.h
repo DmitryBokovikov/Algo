@@ -24,7 +24,7 @@ namespace segment_tree_ns
 	}
 
 	// in case of left > right returns std::numeric_limits<T>::min()
-	T get_value(size_t left, size_t right)
+	T get_value(size_t left, size_t right) const
 	{
 	    auto opt_value = get_value_int(1, 0, tree_size_ - 1, left, right);
 	    if (opt_value.has_value())
@@ -35,7 +35,7 @@ namespace segment_tree_ns
 
 	void update(size_t pos, T new_value)
 	{
-	    update_int(1, 0, n - 1, pos, new_value);
+	    update_int(1, 0, tree_size_ - 1 - 1, pos, new_value);
 	}
     private:
 	void build(const std::vector<T>& cont, size_t vertex, size_t left, size_t right)
@@ -53,7 +53,7 @@ namespace segment_tree_ns
 	    }
 	}
 
-	std::optional<T> get_value_int(size_t vertex, size_t tree_left, size_t tree_right, size_t left, size_t right)
+	std::optional<T> get_value_int(size_t vertex, size_t tree_left, size_t tree_right, size_t left, size_t right) const
 	{
 	    if (left > right)
 		return std::nullopt;
@@ -81,10 +81,10 @@ namespace segment_tree_ns
 	    {
 		size_t center = (tree_left + tree_right) / 2;
 		if (pos <= center)
-		    update(vertex * 2, tree_left, center, pos, new_value);
+		    update_int(vertex * 2, tree_left, center, pos, new_value);
 		else
-		    update(vertex * 2 + 1, center + 1, tree_right, pos, new_value);
-		tree_[vertex] = tree_[vertex * 2] + tree_[vertex * 2 + 1];
+		    update_int(vertex * 2 + 1, center + 1, tree_right, pos, new_value);
+		tree_[vertex] = binary_op_(tree_[vertex * 2], tree_[vertex * 2 + 1]);
 	    }
 	}
     private:
