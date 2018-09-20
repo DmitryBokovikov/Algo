@@ -18,6 +18,7 @@ namespace tests_ns
 			bubble_sort,
 			dwarf_sort,
 			selection_sort,
+			selection_sort_fast,
 			insertion_sort,
 			merge_sort,
 			quick_sort,

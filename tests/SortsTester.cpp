@@ -19,6 +19,7 @@ namespace tests_ns
 	case sort_name::quick_sort:
 	case sort_name::heap_sort:
 	case sort_name::radix_sort:
+	case sort_name::selection_sort_fast:
 	    return true;
 	default:
 	    return false;
@@ -29,14 +30,15 @@ namespace tests_ns
 	using namespace algo_ns;
 	implemented_sorts_ =
 	{
-	    { sort_name::bubble_sort,	    bubble_sort<VLIterator> },
-	    //{ "DwarfSort",		    dwarf_sort<VLIterator> },
-	    { sort_name::selection_sort,    selection_sort<VLIterator> },
-	    { sort_name::insertion_sort,    insertion_sort<VLIterator> },
-	    { sort_name::merge_sort,	    merge_sort<VLIterator> },
-	    { sort_name::quick_sort,	    quick_sort<VLIterator> }
-	    //{ "HeapSort",		    heap_sort<VLIterator> },
-	    //{ "RadixSort",		    radix_sort<VLIterator> }
+	    { sort_name::bubble_sort,		bubble_sort<VLIterator> },
+	    //{ "DwarfSort",			dwarf_sort<VLIterator> },
+	    { sort_name::selection_sort,	selection_sort<VLIterator> },
+	    { sort_name::selection_sort_fast,	selection_sort_fast<VLIterator> },
+	    { sort_name::insertion_sort,	insertion_sort<VLIterator> },
+	    { sort_name::merge_sort,		merge_sort<VLIterator> },
+	    { sort_name::quick_sort,		quick_sort<VLIterator> }
+	    //{ "HeapSort",			heap_sort<VLIterator> },
+	    //{ "RadixSort",			radix_sort<VLIterator> }
 	};
 
 	for (const auto& impl_sort : implemented_sorts_)
@@ -73,6 +75,8 @@ namespace tests_ns
 	    return "dwarf_sort";
 	case sort_name::selection_sort:
 	    return "selection_sort";
+	case sort_name::selection_sort_fast:
+	    return "selection_sort_fast";
 	case sort_name::insertion_sort:
 	    return "insertion_sort";
 	case sort_name::merge_sort:
@@ -96,6 +100,8 @@ namespace tests_ns
 	    return sort_name::dwarf_sort;
 	if (sort == "selection_sort")
 	    return sort_name::selection_sort;
+	if (sort == "selection_sort_fast")
+	    return sort_name::selection_sort_fast;
 	if (sort == "insertion_sort")
 	    return sort_name::insertion_sort;
 	if (sort == "merge_sort")

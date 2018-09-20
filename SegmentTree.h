@@ -7,7 +7,7 @@
 #include <type_traits>
 #include <optional>
 
-namespace segment_tree_ns
+namespace algo_ns::segment_tree_ns
 {
     template <class T, class binary_func>
     class segment_tree
@@ -23,7 +23,6 @@ namespace segment_tree_ns
 	    build(elems, 1, 0, tree_size_ - 1);
 	}
 
-	// in case of left > right returns std::numeric_limits<T>::min()
 	T get_value(size_t left, size_t right) const
 	{
 	    auto opt_value = get_value_int(1, 0, tree_size_ - 1, left, right);
@@ -35,7 +34,7 @@ namespace segment_tree_ns
 
 	void update(size_t pos, T new_value)
 	{
-	    update_int(1, 0, tree_size_ - 1 - 1, pos, new_value);
+	    update_int(1, 0, tree_size_ - 1, pos, new_value);
 	}
     private:
 	void build(const std::vector<T>& cont, size_t vertex, size_t left, size_t right)

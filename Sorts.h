@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SegmentTree.h"
+
 #include <vector>
 #include <algorithm>
 #include <iterator>
@@ -21,6 +23,35 @@ namespace algo_ns
     {
 	for (auto it = itBeg; it < itEnd; ++it)
 	    std::iter_swap(it, std::min_element(it, itEnd));
+    }
+
+    template <class RAIterator>
+    void selection_sort_fast(RAIterator itBeg, RAIterator itEnd)
+    {
+	using valueT = typename std::iterator_traits<RAIterator>::value_type;
+	segment_tree_ns::min_segment_tree<valueT> min_tree(std::vector<valueT>(itBeg, itEnd));
+
+	size_t last = itEnd - itBeg - 1;
+	for (auto it = itBeg; it < itEnd; ++it)
+	{
+	    size_t pos = it - itBeg;
+	    auto min_value = min_tree.get_value(pos, last);
+	    // use binary search to find index of min element in segment tree
+	    size_t left = pos;
+	    size_t right = last;
+	    while (left != right)
+	    {
+		size_t middle = (left + right) / 2;
+		if (min_tree.get_value(left, middle) == min_value)
+		    right = middle;
+		else
+		    left = middle + 1;
+	    }
+
+	    size_t found_pos = left;
+	    min_tree.update(found_pos, *it);
+	    std::iter_swap(it, itBeg + found_pos);
+	}	    
     }
 
     template <class RAIterator>

@@ -7,13 +7,14 @@
 
 namespace tests_ns
 {
+    using namespace algo_ns;
     class segment_tree_tester
     {
     public:
 	void test_all()
 	{
 	    auto data = util_ns::gen_data(TEST_DATA_LENGTH);
-	    std::vector<std::pair<long, long>> cases;
+	    std::vector<std::pair<long long, long long>> cases;
 	    cases.reserve(TEST_CASES_COUNT);
 	    std::generate_n(std::back_inserter(cases), TEST_CASES_COUNT, []()
 	    {
@@ -50,7 +51,7 @@ namespace tests_ns
 	template <class binary_functor>
 	void test(
 	    const std::vector<long long>& vec,
-	    const std::vector<std::pair<long, long>>& cases,
+	    const std::vector<std::pair<long long, long long>>& cases,
 	    binary_functor functor,
 	    const segment_tree_ns::segment_tree<long long, binary_functor>& seg_tree)
 	{
