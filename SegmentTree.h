@@ -95,19 +95,21 @@ namespace algo_ns::segment_tree_ns
     template <class T>
     using sum_segment_tree = segment_tree<T, std::plus<T>>;
 
-    template <class T>
-    struct max_s
+    struct max_functor
     {
-	T operator()(T lhs, T rhs) const { return std::max<T>(lhs, rhs); }
+	template <class T>
+	T operator()(const T& lhs, const T& rhs) const { return std::max<T>(lhs, rhs); }
     };
-    template <class T>
-    using max_segment_tree = segment_tree <T, max_s<T>> ;
 
     template <class T>
-    struct min_s
+    using max_segment_tree = segment_tree <T, max_functor> ;
+
+    struct min_functor
     {
-	T operator()(T lhs, T rhs) const { return std::min<T>(lhs, rhs); }
+	template <class T>
+	T operator()(const T& lhs, const T& rhs) const { return std::min<T>(lhs, rhs); }
     };
+
     template <class T>
-    using min_segment_tree = segment_tree<T, min_s<T>>;
+    using min_segment_tree = segment_tree <T, min_functor>;
 }

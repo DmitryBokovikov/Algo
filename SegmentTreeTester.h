@@ -31,7 +31,7 @@ namespace tests_ns
 	    segment_tree_ns::min_segment_tree<long long> min_tree(data);
 
 	    test(data, cases, std::plus<long long>(), sum_tree);
-	    test(data, cases, segment_tree_ns::min_s<long long>(), min_tree);
+	    test(data, cases, segment_tree_ns::min_functor(), min_tree);
 
 	    // update values
 	    for (size_t i = 0; i < size(data); ++i)
@@ -45,7 +45,7 @@ namespace tests_ns
 	    }
 
 	    test(data, cases, std::plus<long long>(), sum_tree);
-	    test(data, cases, segment_tree_ns::min_s<long long>(), min_tree);
+	    test(data, cases, segment_tree_ns::min_functor(), min_tree);
 	}
     private:
 	template <class binary_functor>
@@ -67,7 +67,7 @@ namespace tests_ns
 	template <class binary_functor>
 	long long etalon_result(const std::vector<long long>& vec, const std::pair<long, long>& segment, binary_functor functor)
 	{	   
-	    long long ans = std::is_same_v<binary_functor, segment_tree_ns::min_s<long long>> ?
+	    long long ans = std::is_same_v<binary_functor, segment_tree_ns::min_functor> ?
 		std::numeric_limits<long long>::max() : 0;
 
 	    for (long i = segment.first; i <= segment.second; ++i)

@@ -1,0 +1,13 @@
+/.vs
+*.log
+*.pch
+*.obj
+*.iobj
+*.tlog
+*.idb
+*.lib
+*.dll
+*.exp
+*.ilk
+*.pdb
+*.ipdb

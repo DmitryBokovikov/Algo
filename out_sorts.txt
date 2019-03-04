@@ -1,0 +1,5 @@
+std::sort       : 82           milliseconds
+merge_sort      : 281          milliseconds
+quick_sort      : 66           milliseconds
+selection_sort_fast : 13506        milliseconds
+insertion_sort  : 140685       milliseconds
