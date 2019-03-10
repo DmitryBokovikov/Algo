@@ -1,0 +1,8 @@
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns='http://schemas.microsoft.com/developer/msbuild/2003'>
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<AdditionalIncludeDirectories>$(SolutionDir);$(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<LanguageStandard>stdcpp17</LanguageStandard>
+		</ClCompile>
+	</ItemDefinitionGroup>
+</Project>

@@ -24,7 +24,7 @@ namespace range_ns
     }
 
     template<class Container, class Condition>
-    decltype(auto) find_if(const Container& container, Condition condition)
+    decltype(auto) find_if(Container& container, Condition condition)
     {
 	return std::find_if(container.begin(), container.end(), condition);
     }
@@ -36,13 +36,13 @@ namespace range_ns
     }
 
     template<class Container, class Condition = std::less<typename Container::value_type>>
-    decltype(auto) min_element(const Container& container, Condition condition = Condition())
+    decltype(auto) min_element(Container& container, Condition condition = Condition())
     {
 	return std::min_element(container.begin(), container.end(), condition);
     }
 
     template<class Container, class Condition = std::less<typename Container::value_type>>
-    decltype(auto) minmax_element(const Container& container, Condition condition = Condition())
+    decltype(auto) minmax_element(Container& container, Condition condition = Condition())
     {
 	return std::minmax_element(container.begin(), container.end(), condition);
     }
@@ -72,19 +72,19 @@ namespace range_ns
     }
 
     template<class Container, class T, class Compare = std::less<typename Container::value_type>>
-    decltype(auto) equal_range(const Container& container, const T& elem, Compare compare = Compare())
+    decltype(auto) equal_range(Container& container, const T& elem, Compare compare = Compare())
     {
 	return std::equal_range(container.begin(), container.end(), elem, compare);
     }
 
     template<class Container, class T, class Compare = std::less<typename Container::value_type>>
-    decltype(auto) lower_bound(const Container& container, const T& elem, Compare compare = Compare())
+    decltype(auto) lower_bound(Container& container, const T& elem, Compare compare = Compare())
     {
 	return std::lower_bound(container.begin(), container.end(), elem, compare);
     }
 
     template<class Container, class T>
-    decltype(auto) upper_bound(const Container& container, const T& elem)
+    decltype(auto) upper_bound(Container& container, const T& elem)
     {
 	return std::upper_bound(container.begin(), container.end(), elem);
     }
@@ -212,3 +212,5 @@ namespace range_ns
 	return std::binary_search(cbegin(container), cend(container), elem);
     }
 }
+
+using namespace range_ns;
