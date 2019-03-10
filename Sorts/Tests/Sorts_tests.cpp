@@ -13,7 +13,7 @@ using ll = long long;
 
 namespace sort_ns::tests
 {		
-	TEST_CLASS(SortsTester)
+	TEST_CLASS(Sorts_tests)
 	{
 	public:
 	    TEST_METHOD_INITIALIZE(init_test_data)

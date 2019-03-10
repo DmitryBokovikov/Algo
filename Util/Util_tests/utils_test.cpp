@@ -8,7 +8,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace util_ns
+namespace util_ns::tests
 {		
     TEST_CLASS(Util_tests)
     {
