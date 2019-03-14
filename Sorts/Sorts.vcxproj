@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="linear_sort.h" />
     <ClInclude Include="quadratic_sorts.h" />
     <ClInclude Include="quick_sort.h" />
   </ItemGroup>

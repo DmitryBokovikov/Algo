@@ -21,5 +21,8 @@
     <ClInclude Include="quick_sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="linear_sort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

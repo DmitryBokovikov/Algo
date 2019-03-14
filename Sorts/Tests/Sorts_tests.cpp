@@ -4,6 +4,7 @@
 #include <Util/Util.h>
 #include <Sorts/quadratic_sorts.h>
 #include <Sorts/quick_sort.h>
+#include <Sorts/linear_sort.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace util_ns;
@@ -73,6 +74,16 @@ namespace sort_ns::tests
 	    TEST_METHOD(quick_sort_test)
 	    {
 		fast_sort_method_test(quick_sort<>);
+	    }
+
+	    TEST_METHOD(radix_sort_test)
+	    {
+		fast_sort_method_test(radix_sort<>);
+	    }
+
+	    TEST_METHOD(count_sort_test)
+	    {
+		fast_sort_method_test(count_sort<>);
 	    }
 
 	private:

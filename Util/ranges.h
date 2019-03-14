@@ -17,6 +17,18 @@ namespace range_ns
 	std::sort(container.begin(), container.end(), compare);
     }
 
+    template <class Container, class Condition>
+    decltype(auto) partition(Container& container, Condition condition)
+    {
+	return std::partition(begin(container), end(container), condition);
+    }
+
+    template <class Container, class Condition>
+    decltype(auto) stable_partition(Container& container, Condition condition)
+    {
+	return std::stable_partition(begin(container), end(container), condition);
+    }
+
     template<class Container, class T>
     decltype(auto) find(Container& container, const T& elem)
     {
