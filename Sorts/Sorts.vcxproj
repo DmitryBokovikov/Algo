@@ -19,7 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="heap_sort.h" />
     <ClInclude Include="linear_sort.h" />
+    <ClInclude Include="merge_sort.h" />
     <ClInclude Include="quadratic_sorts.h" />
     <ClInclude Include="quick_sort.h" />
   </ItemGroup>

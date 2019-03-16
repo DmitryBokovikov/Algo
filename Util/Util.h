@@ -21,5 +21,8 @@ namespace util_ns
     {
 	return static_cast<int>(size(i_container));
     }
+
+    template <class T = int>
+    T constexpr INF = std::numeric_limits<T>::max;
 }
 

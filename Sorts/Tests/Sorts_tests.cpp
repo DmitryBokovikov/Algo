@@ -5,6 +5,8 @@
 #include <Sorts/quadratic_sorts.h>
 #include <Sorts/quick_sort.h>
 #include <Sorts/linear_sort.h>
+#include <Sorts/merge_sort.h>
+#include <Sorts/heap_sort.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace util_ns;
@@ -19,10 +21,10 @@ namespace sort_ns::tests
 	public:
 	    TEST_METHOD_INITIALIZE(init_test_data)
 	    {
-		for (ll data_size : { 0, 1, 2, 3, 5, 20, 100, 1'000, 10'000 })
+		for (int data_size : { 0, 1, 2, 3, 5, 20, 100, 1'000, 10'000 })
 		    m_test_small_cases.emplace_back(gen_data(data_size));
 
-		for (ll data_size : { 100'000, 1'000'000 })
+		for (int data_size : { 100'000, 1'000'000 })
 		    m_test_big_cases.emplace_back(gen_data(data_size));
 	    }
 
@@ -84,6 +86,16 @@ namespace sort_ns::tests
 	    TEST_METHOD(count_sort_test)
 	    {
 		fast_sort_method_test(count_sort<>);
+	    }
+
+	    TEST_METHOD(merge_sort_test)
+	    {
+		fast_sort_method_test(merge_sort<>);
+	    }
+
+	    TEST_METHOD(heap_sort_test)
+	    {
+		fast_sort_method_test(heap_sort<>);
 	    }
 
 	private:
