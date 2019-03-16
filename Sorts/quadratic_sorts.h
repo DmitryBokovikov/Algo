@@ -9,14 +9,9 @@ namespace sort_ns
     void bubble_sort(Container& io_container)
     {
 	for (ll i : xrange(size(io_container)))
-	{
-	    ll j = i;
-	    while (j > 0 && io_container[j - 1] > io_container[j])
-	    {
-		std::swap(io_container[j - 1], io_container[j]);
-		--j;
-	    }		
-	}	
+	    for (ll j : xrange(1, size(io_container) - i))
+		if (io_container[j - 1] > io_container[j])
+		    std::swap(io_container[j - 1], io_container[j]);	
     }
 
     template <class Container = std::vector<ll>>
