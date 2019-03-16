@@ -28,13 +28,15 @@ namespace sort_ns
 	ll i = 0;
 	while (i < lsize(io_container))
 	{
-	    if (i == 0 || io_container[i] >= io_container[i - 1])
+	    if (i > 0 && io_container[i - 1] > io_container[i])
+	    {
+		std::swap(io_container[i], io_container[i - 1]);
+		--i;
+	    }
+	    else
 	    {
 		++i;
-		continue;
 	    }
-	    std::swap(io_container[i], io_container[i - 1]);
-	    --i;
 	}
     }
 
