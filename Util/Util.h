@@ -26,5 +26,11 @@ namespace util_ns
 
     template <class T = int>
     T constexpr INF = std::numeric_limits<T>::max;
+
+    template<class T = int>
+    T ceil_div(T n, T k)
+    {
+	return static_cast<T>(ceil(static_cast<double>(n) / k));
+    }
 }
 

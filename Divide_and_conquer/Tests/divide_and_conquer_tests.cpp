@@ -51,6 +51,11 @@ namespace divide_and_conquer_ns::tests
 	    test_nth_element_func(get_std_nth_element);
 	}
 
+	TEST_METHOD(test_nth_element_linear)
+	{
+	    test_nth_element_func(nth_element_linear<>);
+	}	
+
     private:
 	vector<vector<ll>> m_test_cases;
     };
