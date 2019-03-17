@@ -32,5 +32,17 @@ namespace util_ns::tests
 	    auto[data, time] = util_ns::spent_time([]() { return util_ns::gen_data(1'000'000); });
 	    Assert::AreEqual(isize(data), 1'000'000, L"unexpected size");
 	}
+
+	TEST_METHOD(get_random_test)
+	{
+	    int random = get_random(2, 3);
+	    Assert::IsTrue(random == 2);
+	    for (ll i : xrange(1000))
+	    {
+		auto[l, r] = std::pair{ 100, 150 };
+		random = get_random(l, r);
+		Assert::IsTrue(random >= l && random < r);
+	    }    
+	}
     };
 }

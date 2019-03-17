@@ -15,11 +15,11 @@ namespace sort_ns
 	    if (it_end - it_beg <= 1)
 		return;
 
-	    auto it_pivot = it_beg + (it_end - it_beg) / 2;
-	    auto it_bigger = std::partition(it_beg, it_end, [pivot_value = *it_pivot](const auto& val) { return val <= pivot_value; });
-	    auto it_equal = std::partition(it_beg, it_bigger, [pivot_value = *it_pivot](const auto& val) { return val < pivot_value; });
+	    auto pivot = *(it_beg + (it_end - it_beg) / 2);
+	    auto it_greater = std::partition(it_beg, it_end, [pivot](const auto& val) { return val <= pivot; });
+	    auto it_equal = std::partition(it_beg, it_greater, [pivot](const auto& val) { return val < pivot; });
 	    quick_sort_impl(it_beg, it_equal);
-	    quick_sort_impl(it_bigger, it_end);
+	    quick_sort_impl(it_greater, it_end);
 	};
 
 	quick_sort_impl(begin(io_container), end(io_container));

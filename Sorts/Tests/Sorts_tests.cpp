@@ -98,6 +98,15 @@ namespace sort_ns::tests
 		fast_sort_method_test(heap_sort<>);
 	    }
 
+	    TEST_METHOD(std_sort_test)
+	    {
+		auto std_sort_range_wrapped = [](std::vector<ll>& io_vec)
+		{
+		    std::sort(begin(io_vec), end(io_vec));
+		};
+		fast_sort_method_test(std_sort_range_wrapped);
+	    }
+
 	private:
 	    vector<vector<ll>> m_test_small_cases;
 	    vector<vector<ll>> m_test_big_cases;
