@@ -17,11 +17,11 @@ namespace sort_ns
     void count_sort(Container& io_container)
     {
 	using type_t = Container::value_type;
-	vector<type_t> buckets(empty(io_container) ? 0 : *range_ns::max_element(io_container) + 1);
+	std::vector<type_t> buckets(empty(io_container) ? 0 : *range_ns::max_element(io_container) + 1);
 	for (type_t val : io_container)
 	    ++buckets[val];
 	ll j = 0;
-	for (ll i : xrange(lsize(buckets)))
+	for (ll i : range_ns::xrange(lsize(buckets)))
 	{
 	    ll n = buckets[i];
 	    while (n--)

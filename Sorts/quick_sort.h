@@ -9,7 +9,7 @@ namespace sort_ns
     void quick_sort(Container& io_container)
     {
 	using it_t = Container::iterator;
-	function<void(it_t, it_t)> quick_sort_impl;
+	std::function<void(it_t, it_t)> quick_sort_impl;
 	quick_sort_impl = [&quick_sort_impl](it_t it_beg, it_t it_end)
 	{
 	    if (it_end - it_beg <= 1)

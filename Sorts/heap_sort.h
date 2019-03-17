@@ -52,7 +52,7 @@ namespace sort_ns
 	int m_size = 0;
     };
 
-    template<class Container = vector<ll>>
+    template<class Container = std::vector<ll>>
     void heap_sort(Container& io_container)
     {
 	pyramid<Container::value_type> p(io_container);

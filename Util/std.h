@@ -26,5 +26,3 @@
 #include <cmath>
 #include <bitset>
 #include <array>
-
-using namespace std;

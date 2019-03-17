@@ -57,6 +57,6 @@ namespace divide_and_conquer_ns::tests
 	}	
 
     private:
-	vector<vector<ll>> m_test_cases;
+	std::vector<std::vector<ll>> m_test_cases;
     };
 }

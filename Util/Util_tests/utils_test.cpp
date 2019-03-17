@@ -37,7 +37,7 @@ namespace util_ns::tests
 	{
 	    int random = get_random(2, 3);
 	    Assert::IsTrue(random == 2);
-	    for (ll i : xrange(1000))
+	    for (ll i : range_ns::xrange(1000))
 	    {
 		auto[l, r] = std::pair{ 100, 150 };
 		random = get_random(l, r);

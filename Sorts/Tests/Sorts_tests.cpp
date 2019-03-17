@@ -28,9 +28,9 @@ namespace sort_ns::tests
 		    m_test_big_cases.emplace_back(gen_data(data_size));
 	    }
 
-	    using sort_func_t = std::function<void(vector<ll>&)>;
+	    using sort_func_t = std::function<void(std::vector<ll>&)>;
 
-	    void sort_test(sort_func_t sort_func, const vector<vector<ll>>& test_cases)
+	    void sort_test(sort_func_t sort_func, const std::vector<std::vector<ll>>& test_cases)
 	    {
 		for (const auto& test_data : test_cases)
 		{
@@ -108,7 +108,7 @@ namespace sort_ns::tests
 	    }
 
 	private:
-	    vector<vector<ll>> m_test_small_cases;
-	    vector<vector<ll>> m_test_big_cases;
+	    std::vector<std::vector<ll>> m_test_small_cases;
+	    std::vector<std::vector<ll>> m_test_big_cases;
 	};
 }

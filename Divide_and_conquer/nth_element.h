@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Util/std.h>
-#include <Util/Util.h>
 #include <Util/ranges.h>
+#include <Util/Util.h>
 
 namespace
 {
@@ -54,9 +54,9 @@ namespace divide_and_conquer_ns
 	    if (it_end - it_beg == 1)
 		return *it_beg;
 	    int constexpr ELEMENTS_IN_GROUP = 5;
-	    int groups_count = util_ns::ceil_div(static_cast<int>(it_end - it_beg), ELEMENTS_IN_GROUP);
+	    const int groups_count = util_ns::ceil_div(static_cast<int>(it_end - it_beg), ELEMENTS_IN_GROUP);
 	    Container medians;
-	    for (ll i : xrange(groups_count))
+	    for (ll i : range_ns::xrange(groups_count))
 	    {
 		auto it_real_end = std::min(it_beg + ELEMENTS_IN_GROUP * (i + 1), it_end);
 		std::sort(it_beg + ELEMENTS_IN_GROUP * i, it_real_end);

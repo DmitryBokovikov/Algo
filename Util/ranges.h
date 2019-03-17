@@ -224,5 +224,3 @@ namespace range_ns
 	return std::binary_search(cbegin(container), cend(container), elem);
     }
 }
-
-using namespace range_ns;
