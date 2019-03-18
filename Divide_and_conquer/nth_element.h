@@ -58,9 +58,10 @@ namespace divide_and_conquer_ns
 	    Container medians;
 	    for (ll i : range_ns::xrange(groups_count))
 	    {
-		auto it_real_end = std::min(it_beg + ELEMENTS_IN_GROUP * (i + 1), it_end);
-		std::sort(it_beg + ELEMENTS_IN_GROUP * i, it_real_end);
-		medians.emplace_back(*(it_beg + (it_end - it_beg) / 2));
+		auto it_current_group_end = std::min(it_beg + ELEMENTS_IN_GROUP * (i + 1), it_end);
+		auto it_current_group_beg = it_beg + ELEMENTS_IN_GROUP * i;
+		std::sort(it_current_group_beg, it_current_group_end);
+		medians.emplace_back(*(it_current_group_beg + (it_current_group_end - it_current_group_beg) / 2));
 	    }
 		
 	    return median_get_pivot(begin(medians), end(medians));
