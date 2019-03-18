@@ -32,11 +32,8 @@ namespace divide_and_conquer_ns
 				}
 			}
 
-			for (ll i : range_ns::xrange(left_processed, total_left_count))
-				temp_container.emplace_back(*(it_beg + i));
-			for (ll i : range_ns::xrange(right_processed, total_right_count))
-				temp_container.emplace_back(*(it_med + i));				
-
+			std::copy(it_beg + left_processed, it_med, std::back_inserter(temp_container));
+			std::copy(it_med + right_processed, it_end, std::back_inserter(temp_container));
 			std::copy(
 				std::make_move_iterator(begin(temp_container)),
 				std::make_move_iterator(end(temp_container)),
