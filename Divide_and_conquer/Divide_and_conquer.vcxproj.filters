@@ -18,5 +18,8 @@
     <ClInclude Include="nth_element.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="count_inversions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

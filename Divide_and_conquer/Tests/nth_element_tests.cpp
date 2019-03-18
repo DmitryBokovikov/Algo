@@ -2,7 +2,6 @@
 #include "CppUnitTest.h"
 
 #include <Divide_and_conquer/nth_element.h>
-#include <Util/Util.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -17,7 +16,7 @@ namespace divide_and_conquer_ns::tests
 	return *(begin(vec) + pos);
     };
 
-    TEST_CLASS(divide_and_conquer_tests)
+    TEST_CLASS(nth_element_tests_tests)
     {
     public:
 	TEST_METHOD_INITIALIZE(init_test_data)

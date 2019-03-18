@@ -23,7 +23,7 @@
     <ProjectGuid>{6063D72E-EFEA-4705-BCDD-8CB35D193CAA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SortsTests</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
     <ProjectName>Sorts_tests</ProjectName>
   </PropertyGroup>

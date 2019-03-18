@@ -26,7 +26,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="divide_and_conquer_tests.cpp">
+    <ClCompile Include="count_inversions_tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nth_element_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

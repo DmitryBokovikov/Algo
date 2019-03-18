@@ -6,6 +6,8 @@
 #include <Util/ranges.h>
 #include <Util/spent_time.h>
 
+#include <numeric>
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace util_ns::tests
@@ -43,6 +45,17 @@ namespace util_ns::tests
 		random = get_random(l, r);
 		Assert::IsTrue(random >= l && random < r);
 	    }    
+	}
+
+	TEST_METHOD(random_permutate_test)
+	{
+		constexpr ll n = 100;
+		std::vector<ll> vec(n);
+		std::iota(begin(vec), end(vec), 1);
+		auto vec_other = vec;
+		random_permutate(vec);
+		random_permutate(vec_other);
+		Assert::IsTrue(vec_other != vec, L"vectors should not be equal after random permutation");
 	}
     };
 }

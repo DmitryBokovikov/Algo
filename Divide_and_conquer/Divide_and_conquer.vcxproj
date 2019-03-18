@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="count_inversions.h" />
     <ClInclude Include="nth_element.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -26,7 +27,7 @@
     <ProjectGuid>{217FB044-8137-432A-AE5F-E6D23630C491}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Divideandconquer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(SolutionDir)\basic_cpp.props" />
