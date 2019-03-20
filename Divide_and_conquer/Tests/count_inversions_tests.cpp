@@ -8,7 +8,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace divide_and_conquer_ns::tests
 {
 	using namespace util_ns;
-	using namespace divide_and_conquer_ns;
 
 	auto naive_count_permutations = [](const std::vector<ll>& i_vec)
 	{

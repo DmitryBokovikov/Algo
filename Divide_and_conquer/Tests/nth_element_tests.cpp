@@ -8,7 +8,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace divide_and_conquer_ns::tests
 {		
     using namespace util_ns;
-    using namespace divide_and_conquer_ns;
 
     auto get_std_nth_element = [](auto& vec, int pos)
     {
