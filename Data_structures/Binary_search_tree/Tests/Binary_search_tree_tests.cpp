@@ -56,7 +56,7 @@ namespace data_structures_ns::tests
 	    binary_search_tree<ll> tree;
 	    const ll data_size = 1'000;
 	    const auto data = util_ns::gen_data(data_size);
-	    Assert::AreEqual(tree.size(), 0, L"size should be zero");
+	    Assert::IsTrue(tree.empty(), L"tree should be empty");
 	    for (ll i : range_ns::xrange(data_size))
 	    {
 		tree.insert(data[i]);
