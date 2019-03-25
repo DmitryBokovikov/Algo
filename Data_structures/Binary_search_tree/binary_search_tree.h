@@ -65,28 +65,18 @@ namespace data_structures_ns
 	    // no children
 	    if (!find_ptr->m_left_ptr && !find_ptr->m_right_ptr)
 	    {
-		if (find_ptr->m_parent_ptr)
-		{
-		    if (find_ptr->m_parent_ptr->m_left_ptr == find_ptr)
-			find_ptr->m_parent_ptr->m_left_ptr.reset();
-		    else
-			find_ptr->m_parent_ptr->m_right_ptr.reset();
-		}
+		if (auto& parent_ptr = find_ptr->m_parent_ptr)
+		    (parent_ptr->m_left_ptr == find_ptr ? parent_ptr->m_left_ptr : parent_ptr->m_right_ptr).reset();
 		else
-		{
 		    m_tree_ptr.reset();
-		}
 	    }
 	    else if (!find_ptr->m_left_ptr || !find_ptr->m_right_ptr)
 	    {
 		const bool has_left = find_ptr->m_left_ptr != nullptr;
-		if (find_ptr->m_parent_ptr)
+		if (auto& parent_ptr = find_ptr->m_parent_ptr)
 		{
-		    const bool parent_ptr_left = find_ptr->m_parent_ptr->m_left_ptr == find_ptr;
-		    if (parent_ptr_left)
-			find_ptr->m_parent_ptr->m_left_ptr = has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr;		
-		    else
-			find_ptr->m_parent_ptr->m_right_ptr = has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr;
+		    const bool parent_ptr_left = parent_ptr->m_left_ptr == find_ptr;
+		    (parent_ptr_left ? parent_ptr->m_left_ptr : parent_ptr->m_right_ptr) = has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr;
 		    (has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr)->m_parent_ptr = find_ptr->m_parent_ptr;
 		}
 		else
