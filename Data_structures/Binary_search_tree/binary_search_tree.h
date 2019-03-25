@@ -70,6 +70,7 @@ namespace data_structures_ns
 		else
 		    m_tree_ptr.reset();
 	    }
+	    // one child
 	    else if (!find_ptr->m_left_ptr || !find_ptr->m_right_ptr)
 	    {
 		const bool has_left = find_ptr->m_left_ptr != nullptr;
@@ -85,6 +86,7 @@ namespace data_structures_ns
 		    (has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr)->m_parent_ptr = nullptr;
 		}
 	    }
+	    // two children
 	    else
 	    {
 		auto left_ptr = find_ptr->m_right_ptr->m_left_ptr;
