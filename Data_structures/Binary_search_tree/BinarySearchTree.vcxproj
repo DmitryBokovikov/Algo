@@ -26,7 +26,7 @@
     <ProjectGuid>{9C076CDB-3CCF-404B-B40C-DFDDD8BE19E7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BinarySearchTree</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>Binary_search_tree</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

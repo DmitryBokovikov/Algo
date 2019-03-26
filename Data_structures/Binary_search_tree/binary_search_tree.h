@@ -78,7 +78,7 @@ namespace data_structures_ns
 		{
 		    const bool parent_ptr_left = parent_ptr->m_left_ptr == find_ptr;
 		    (parent_ptr_left ? parent_ptr->m_left_ptr : parent_ptr->m_right_ptr) = has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr;
-		    (has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr)->m_parent_ptr = find_ptr->m_parent_ptr;
+		    (has_left ? find_ptr->m_left_ptr : find_ptr->m_right_ptr)->m_parent_ptr = parent_ptr;
 		}
 		else
 		{
