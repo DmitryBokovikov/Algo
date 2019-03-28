@@ -36,9 +36,9 @@ namespace data_structures_ns::tests
 	    tree.insert(1);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<int>{ 1, 1, 1 });
 	    tree.insert(2);
-	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<int>{ 1, 1, 2, 1 });
+	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<int>{ 1, 1, 1, 2 });
 	    tree.insert(2);
-	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<int>{ 1, 1, 2, 1, 2 });
+	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<int>{ 1, 1, 1, 2, 2 });
 	}
 	
 	TEST_METHOD(test_find)
@@ -173,11 +173,8 @@ namespace data_structures_ns::tests
 	TEST_METHOD(test_find_next)
 	{
 	    auto data = util_ns::gen_data(10'000);
-	    range_ns::sort(data);
-	    range_ns::erase_unique(data);
-	    util_ns::random_permutate(data);
 
-	    std::set<ll> std_set(cbegin(data), cend(data));
+	    std::multiset<ll> std_set(cbegin(data), cend(data));
 	    binary_search_tree<ll> tree(data);
 
 	    for (ll val : data)

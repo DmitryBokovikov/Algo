@@ -50,14 +50,14 @@ namespace data_structures_ns
 		while (current_ptr)
 		{
 		    previous_ptr = current_ptr;
-		    if (current_ptr->m_value >= i_value)
+		    if (current_ptr->m_value > i_value)
 			current_ptr = current_ptr->m_left_ptr;
 		    else
 			current_ptr = current_ptr->m_right_ptr;
 		}
 		current_ptr = std::make_shared<node>(i_value);
 		current_ptr->m_parent_ptr = previous_ptr;
-		if (previous_ptr->m_value < i_value)
+		if (previous_ptr->m_value <= i_value)
 		    previous_ptr->m_right_ptr = current_ptr;
 		else
 		    previous_ptr->m_left_ptr = current_ptr;
@@ -148,7 +148,7 @@ namespace data_structures_ns
 		    return std::nullopt;
 		while (node_ptr->m_value < i_elem && node_ptr->m_parent_ptr)
 		    node_ptr = node_ptr->m_parent_ptr;
-		return node_ptr->m_value > i_elem ? std::make_optional<T>(node_ptr->m_value) : std::nullopt;
+		return node_ptr->m_value >= i_elem ? std::make_optional<T>(node_ptr->m_value) : std::nullopt;
 	    }
 
 	    node_ptr = node_ptr->m_right_ptr;
