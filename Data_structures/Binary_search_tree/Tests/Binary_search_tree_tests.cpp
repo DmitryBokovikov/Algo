@@ -79,15 +79,14 @@ namespace data_structures_ns::tests
 	    Assert::IsTrue(sorted == elements);
 	    std::multiset<ll> mset(cbegin(sorted), cend(sorted));
 	    util_ns::random_permutate(sorted);
-	    bool need_log = false;
 	    const auto file_out_path = fs::path("M:\\git\\Algo\\bfs_tree.txt");
-	    if (need_log) std::ofstream().open(file_out_path);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) std::ofstream().open(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    for (ll val : sorted)
 	    {
 		tree.erase(val);
 		mset.erase(mset.find(val));
-		if (need_log) tree.test_print_in_bfs_order(file_out_path);
+		if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 		Assert::IsTrue(tree.get_sorted() == std::vector<ll>(cbegin(mset), cend(mset)));
 	    }
 	}
@@ -152,21 +151,20 @@ namespace data_structures_ns::tests
 	    binary_search_tree<ll> tree;
 	    for (ll val : {4, 3, 7, 8, 1, 5, 2, 6})
 		tree.insert(val);
-	    bool need_log = false;
 	    const auto file_out_path = fs::path("M:\\git\\Algo\\bfs_tree.txt");
-	    if (need_log) std::ofstream().open(file_out_path);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) std::ofstream().open(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    tree.erase(7);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<ll>{4, 3, 8, 1, 5, 2, 6});
 	    tree.erase(4);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<ll>{5, 3, 8, 1, 6, 2});
 	    tree.erase(5);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<ll>{6, 3, 8, 1, 2});
 	    tree.erase(6);
-	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
+	    if (m_need_log) tree.test_print_in_bfs_order(file_out_path);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<ll>{8, 3, 1, 2});
 	}
 
@@ -193,5 +191,32 @@ namespace data_structures_ns::tests
 	    Assert::IsTrue(tree.find_next(5).value() == 7);
 	    Assert::IsTrue(!tree.find_next(7).has_value());
 	}
+
+	TEST_METHOD(test_find_prev)
+	{
+	    auto data = util_ns::gen_data(10'000);
+
+	    std::multiset<ll> std_set(cbegin(data), cend(data));
+	    binary_search_tree<ll> tree(data);
+
+	    for (ll val : data)
+	    {
+		auto it = std_set.find(val);
+		auto val_opt = tree.find_prev(val);
+		if (!val_opt)
+		    Assert::IsTrue(it == cbegin(std_set), L"it not equal to begin of set");
+		else
+		    Assert::IsTrue(val_opt.value() == *std::prev(it), L"value are not equal");
+	    }
+
+	    tree.reset();
+	    for (ll val : { 1, 3, 5, 7})
+		tree.insert(val);
+	    Assert::IsTrue(tree.find_prev(5).value() == 3);
+	    Assert::IsTrue(!tree.find_prev(1).has_value());
+	}
+
+    private:
+	const bool m_need_log = false;
     };
 }

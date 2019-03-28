@@ -159,7 +159,25 @@ namespace data_structures_ns
 
 	std::optional<T> find_prev(const T& i_elem) const
 	{
+	    auto node_ptr_opt = find_int(i_elem);
+	    if (!node_ptr_opt)
+		return std::nullopt;
 
+	    auto node_ptr = std::move(node_ptr_opt.value());
+	    if (!node_ptr->m_left_ptr)
+	    {
+		node_ptr = node_ptr->m_parent_ptr;
+		if (!node_ptr)
+		    return std::nullopt;
+		while (node_ptr->m_value > i_elem && node_ptr->m_parent_ptr)
+		    node_ptr = node_ptr->m_parent_ptr;
+		return node_ptr->m_value < i_elem ? std::make_optional<T>(node_ptr->m_value) : std::nullopt;
+	    }
+
+	    node_ptr = node_ptr->m_left_ptr;
+	    while (node_ptr->m_right_ptr)
+		node_ptr = node_ptr->m_right_ptr;
+	    return std::make_optional<T>(node_ptr->m_value);
 	}
 
 	std::vector<T> get_sorted() const
