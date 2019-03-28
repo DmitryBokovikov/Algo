@@ -28,6 +28,15 @@ namespace data_structures_ns
 	using shared_node_ptr = std::shared_ptr<node>;
 
     public:
+	binary_search_tree() = default;
+
+	template <class Container>
+	binary_search_tree(const Container& i_container)
+	{
+	    for (const auto& val : i_container)
+		insert(val);
+	}
+
 	void insert(const T& i_value)
 	{
 	    if (!m_tree_ptr)
@@ -61,7 +70,7 @@ namespace data_structures_ns
 	    auto find_ptr_opt = find_int(i_elem);
 	    if (!find_ptr_opt)
 		return;
-	    auto find_ptr = find_ptr_opt.value();
+	    auto find_ptr = std::move(find_ptr_opt.value());
 	    // no children
 	    if (!find_ptr->m_left_ptr && !find_ptr->m_right_ptr)
 	    {
@@ -127,7 +136,25 @@ namespace data_structures_ns
 
 	std::optional<T> find_next(const T& i_elem) const
 	{
+	    auto node_ptr_opt = find_int(i_elem);
+	    if (!node_ptr_opt)
+		return std::nullopt;
 
+	    auto node_ptr = std::move(node_ptr_opt.value());
+	    if (!node_ptr->m_right_ptr)
+	    {
+		node_ptr = node_ptr->m_parent_ptr;
+		if (!node_ptr)
+		    return std::nullopt;
+		while (node_ptr->m_value < i_elem && node_ptr->m_parent_ptr)
+		    node_ptr = node_ptr->m_parent_ptr;
+		return node_ptr->m_value > i_elem ? std::make_optional<T>(node_ptr->m_value) : std::nullopt;
+	    }
+
+	    node_ptr = node_ptr->m_right_ptr;
+	    while (node_ptr->m_left_ptr)
+		node_ptr = node_ptr->m_left_ptr;
+	    return std::make_optional<T>(node_ptr->m_value);
 	}
 
 	std::optional<T> find_prev(const T& i_elem) const

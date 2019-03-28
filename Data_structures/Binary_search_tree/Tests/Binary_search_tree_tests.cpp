@@ -169,5 +169,32 @@ namespace data_structures_ns::tests
 	    if (need_log) tree.test_print_in_bfs_order(file_out_path);
 	    Assert::IsTrue(tree.get_in_bfs_order() == std::vector<ll>{8, 3, 1, 2});
 	}
+
+	TEST_METHOD(test_find_next)
+	{
+	    auto data = util_ns::gen_data(10'000);
+	    range_ns::sort(data);
+	    range_ns::erase_unique(data);
+	    util_ns::random_permutate(data);
+
+	    std::set<ll> std_set(cbegin(data), cend(data));
+	    binary_search_tree<ll> tree(data);
+
+	    for (ll val : data)
+	    {
+		auto it = std::next(std_set.find(val));
+		auto val_opt = tree.find_next(val);
+		if (!val_opt)
+		    Assert::IsTrue(it == cend(std_set), L"it not equal to end");
+		else
+		    Assert::IsTrue(val_opt.value() == *it, L"value are not equal");
+	    }
+
+	    tree.reset();
+	    for (ll val : { 1, 3, 5, 7})
+		tree.insert(val);
+	    Assert::IsTrue(tree.find_next(5).value() == 7);
+	    Assert::IsTrue(!tree.find_next(7).has_value());
+	}
     };
 }
