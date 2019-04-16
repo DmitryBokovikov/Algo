@@ -18,6 +18,7 @@ namespace math_ns::tests
     {
     public:
 
+	// Google Code Jam 2019 Golf Gophers (https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635/0000000000104f1a)
 	TEST_METHOD(chinese_remainder_theorem_tests)
 	{
 	    constexpr ll test_cases_count = 1'000;
