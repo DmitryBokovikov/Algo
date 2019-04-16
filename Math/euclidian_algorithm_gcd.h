@@ -8,7 +8,7 @@ namespace math_ns
 {
     ll euclidean_algorithm_gcd(ll a, ll b)
     {
-	return a == b ? a : (a > b ? euclidean_algorithm_gcd(a % b, b) : euclidean_algorithm_gcd(a, b % a));
+	return a == b ? a : euclidean_algorithm_gcd(abs(a - b), std::min(a, b));
     }
 
     // gcd(a, b) = x * a + y * b
