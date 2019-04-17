@@ -19,9 +19,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Binary_search_tree", "Data_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Binary_search_tree_tests", "Data_structures\Binary_search_tree\Tests\Binary_search_tree_tests.vcxproj", "{D31FCA7A-FE49-4BB0-AF93-99A42D082EC2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math", "math\chinese_remainder_theorem.vcxproj", "{BC3B1FAA-FE38-4FD0-8615-FF619E980629}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "math\chinese_remainder_theorem.vcxproj", "{BC3B1FAA-FE38-4FD0-8615-FF619E980629}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math_tests", "math\Tests\chinese_remainder_theorem_tests.vcxproj", "{93F46E65-BD87-4A12-8E38-E241B8B7ADEA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math_tests", "math\Tests\chinese_remainder_theorem_tests.vcxproj", "{93F46E65-BD87-4A12-8E38-E241B8B7ADEA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamic_programming", "Dynamic_programming\Dynamic_programming.vcxproj", "{8FD825BD-718D-4352-9BAB-20F82FB102E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamic_programming_tests", "Dynamic_programming\Tests\Dynamic_programming_tests.vcxproj", "{6E403B6F-0083-4573-8FA8-121DE8D2EC29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +115,22 @@ Global
 		{93F46E65-BD87-4A12-8E38-E241B8B7ADEA}.Release|x64.Build.0 = Release|x64
 		{93F46E65-BD87-4A12-8E38-E241B8B7ADEA}.Release|x86.ActiveCfg = Release|Win32
 		{93F46E65-BD87-4A12-8E38-E241B8B7ADEA}.Release|x86.Build.0 = Release|Win32
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Debug|x64.ActiveCfg = Debug|x64
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Debug|x64.Build.0 = Debug|x64
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Debug|x86.ActiveCfg = Debug|Win32
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Debug|x86.Build.0 = Debug|Win32
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Release|x64.ActiveCfg = Release|x64
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Release|x64.Build.0 = Release|x64
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Release|x86.ActiveCfg = Release|Win32
+		{8FD825BD-718D-4352-9BAB-20F82FB102E6}.Release|x86.Build.0 = Release|Win32
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Debug|x64.ActiveCfg = Debug|x64
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Debug|x64.Build.0 = Debug|x64
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Debug|x86.ActiveCfg = Debug|Win32
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Debug|x86.Build.0 = Debug|Win32
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Release|x64.ActiveCfg = Release|x64
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Release|x64.Build.0 = Release|x64
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Release|x86.ActiveCfg = Release|Win32
+		{6E403B6F-0083-4573-8FA8-121DE8D2EC29}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

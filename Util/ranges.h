@@ -223,4 +223,13 @@ namespace range_ns
     {
 	return std::binary_search(cbegin(container), cend(container), elem);
     }
+
+    template <class Container>
+    Container partial_sum(const Container& i_container)
+    {
+	Container o_container;
+	o_container.reserve(size(i_container));
+	std::partial_sum(cbegin(i_container), cend(i_container), std::back_inserter(o_container));
+	return o_container;
+    }
 }
