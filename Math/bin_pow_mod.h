@@ -8,8 +8,6 @@ namespace math_ns
 {
     ll bin_pow_mod(ll a, ll n, ll m)
     {
-	if (a == 0)
-	    return 0;
 	if (n == 0)
 	    return 1;
 	if (n % 2)

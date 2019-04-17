@@ -9,7 +9,7 @@
 
 namespace math_ns
 {
-    // Euler's theorem, suppose that is prime
+    // Euler's theorem, suppose that p is prime
     ll inverse_element(ll a, ll p)
     {
 	return bin_pow_mod(a, p - 2, p);
