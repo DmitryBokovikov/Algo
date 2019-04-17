@@ -30,5 +30,8 @@
     <ClInclude Include="primes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="factorize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,6 +22,7 @@
     <ClInclude Include="bin_pow_mod.h" />
     <ClInclude Include="chinese_remainder_theorem.h" />
     <ClInclude Include="euclidian_algorithm_gcd.h" />
+    <ClInclude Include="factorize.h" />
     <ClInclude Include="inverse_element.h" />
     <ClInclude Include="primes.h" />
   </ItemGroup>
