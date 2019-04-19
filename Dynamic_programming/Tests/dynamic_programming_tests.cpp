@@ -43,5 +43,24 @@ namespace dp_ns::dynamic_programming_tests
 		Assert::IsTrue(get_max_segment_naive(vec) == find_max_segment(vec));
 	    }
 	}
+
+	TEST_METHOD(max_submatrix_tests)
+	{
+	    auto gen_matrix = [](ll n, ll m)
+	    {
+		std::vector<std::vector<ll>> matrix(n);
+		std::generate_n(begin(matrix), size(matrix), [&]() { return get_random_vector(m); });
+		return matrix;
+	    };
+
+	    constexpr ll test_cases_count = 1'000;
+	    for (ll i : xrange(test_cases_count))
+	    {
+		const ll n = get_random(1, 60), m = get_random(1, 60);
+		auto matrix = gen_matrix(n, m);
+		ll val = max_submatrix(matrix), val_naive = max_submatrix_naive(matrix);
+		Assert::IsTrue(val == val_naive);   
+	    }
+	}
     };
 }
