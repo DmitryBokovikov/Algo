@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
-#include <Data_structures/Binary_search_tree/binary_search_tree.h>
+#include <Data_structures/binary_search_tree.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
