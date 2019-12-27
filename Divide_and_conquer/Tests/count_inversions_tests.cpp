@@ -12,8 +12,8 @@ namespace divide_and_conquer_ns::tests
     auto naive_count_permutations = [](const std::vector<ll>& i_vec)
     {
 	ll ans = 0;
-	for (ll i : range_ns::xrange(lsize(i_vec)))
-	    for (ll j : range_ns::xrange(i + 1, lsize(i_vec)))
+	for (ll i : range_ns::indices(lsize(i_vec)))
+	    for (ll j : range_ns::indices(i + 1, lsize(i_vec)))
 		if (i_vec[j] < i_vec[i])
 		    ++ans;
 	return ans;
@@ -57,7 +57,7 @@ namespace divide_and_conquer_ns::tests
 	    constexpr ll iterations_count = 10;
 	    std::vector<ll> vec(n);
 	    std::iota(begin(vec), end(vec), 1);
-	    for (ll i : range_ns::xrange(iterations_count))
+	    for (ll i : range_ns::indices(iterations_count))
 	    {
 		random_permutate(vec);
 		ll inversions_count = naive_count_permutations(vec);

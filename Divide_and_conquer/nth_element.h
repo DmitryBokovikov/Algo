@@ -56,7 +56,7 @@ namespace divide_and_conquer_ns
 	    int constexpr ELEMENTS_IN_GROUP = 5;
 	    const int groups_count = util_ns::ceil_div(static_cast<int>(it_end - it_beg), ELEMENTS_IN_GROUP);
 	    Container medians;
-	    for (ll i : range_ns::xrange(groups_count))
+	    for (ll i : range_ns::indices(groups_count))
 	    {
 		auto it_current_group_end = std::min(it_beg + ELEMENTS_IN_GROUP * (i + 1), it_end);
 		auto it_current_group_beg = it_beg + ELEMENTS_IN_GROUP * i;

@@ -15,9 +15,9 @@ namespace math_ns
     */
     ll chinese_remainder_theorem(const std::vector<ll>& a, const std::vector<ll> r)
     {
-	const ll M = range_ns::reduce(a, ll(1), std::multiplies<ll>());
+	const ll M = range_ns::accumulate(a, ll(1), std::multiplies<ll>());
 	ll ans = 0;
-	for (ll i : range_ns::xrange(size(a)))
+	for (ll i : range_ns::indices(size(a)))
 	{
 	    const ll m = M / a[i];
 	    ans += (r[i] * m * inverse_element_euclid(m, a[i])) % M;

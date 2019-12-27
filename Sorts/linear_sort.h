@@ -21,7 +21,7 @@ namespace sort_ns
 	for (type_t val : io_container)
 	    ++buckets[val];
 	ll j = 0;
-	for (ll i : range_ns::xrange(lsize(buckets)))
+	for (ll i : range_ns::indices(lsize(buckets)))
 	{
 	    ll n = buckets[i];
 	    while (n--)

@@ -57,12 +57,12 @@ namespace data_structures_ns::tests
 	    const ll data_size = 1'000;
 	    const auto data = util_ns::gen_data(data_size);
 	    Assert::IsTrue(tree.empty(), L"tree should be empty");
-	    for (ll i : range_ns::xrange(data_size))
+	    for (ll i : range_ns::indices(data_size))
 	    {
 		tree.insert(data[i]);
 		Assert::AreEqual(tree.size(), static_cast<int>(i + 1), L"unexpected tree size");
 	    }
-	    for (ll i : range_ns::xrange(data_size))
+	    for (ll i : range_ns::indices(data_size))
 	    {
 		tree.erase(data[i]);
 		Assert::AreEqual(tree.size(), static_cast<int>(data_size - i - 1), L"unexpected tree size");

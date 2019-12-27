@@ -2,14 +2,15 @@
 
 #include <Util/std.h>
 #include <Util/ranges.h>
+#include <Util/Util.h>
 
 namespace sort_ns
 {
     template <class Container = std::vector<ll>>
     void bubble_sort(Container& io_container)
     {
-	for (ll i : range_ns::xrange(size(io_container)))
-	    for (ll j : range_ns::xrange(1, size(io_container) - i))
+	for (int i : range_ns::indices(isize(io_container)))
+	    for (int j : range_ns::indices(1, isize(io_container) - i))
 		if (io_container[j - 1] > io_container[j])
 		    std::swap(io_container[j - 1], io_container[j]);	
     }
